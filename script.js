@@ -169,7 +169,7 @@ function checkComment(){
 
 	}
 
-	if (![0,1,2,3,4,5].includes(rating)){
+	if (rating !=0 && rating !=1 && rating !=2 && rating !=3 && rating !=4 && rating !=5){
 		error.push(1);
 		const small = commentForm.querySelector('small');
 		small.classList.add('notHiddenError')
