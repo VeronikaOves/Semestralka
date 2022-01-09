@@ -1,0 +1,534 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    z-index: 1;
+}
+
+p {
+    color:#f0f0f0;
+}
+
+.wrapper a {
+    z-index: 2;
+}
+main {
+    display: block;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    background: linear-gradient(270deg, #2d0774 0.14%, #125153 74.72%);
+    mix-blend-mode: normal;
+    display: flex;
+    justify-content: center;
+}
+
+/* wrapper style */
+.wrapper {
+    position: fixed;
+    width: 100%;
+    height: 67px;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(120, 98, 167, 0.43);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.wrapper li {
+    list-style: none;
+}
+
+
+.wrapper li:nth-last-of-type(2) p {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #FBF9FF;
+    left: 0%;
+    right: 0%;
+    top: 8.2%;
+    bottom: 37.1%;
+}
+
+.wrapper li:nth-last-of-type(3) {
+    position: absolute;
+    left: 75%;
+    right: 13%;
+    top: 53%;
+    bottom: 13%;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+
+    text-align: center;
+
+    color: #2A1E45;
+}
+.wrapper .button {
+    width: 115px;
+    height: 25px;
+    background: #5D4399;
+    border-radius: 15px;
+    position: absolute;
+    left: 84.44%;
+    right: 7.57%;
+    top: 47.96%;
+    bottom: 14.73%;
+}
+
+#logoName {
+    position: absolute;
+    left: 7.5%;
+    right: 78.5%;
+    top: 21.5%;
+    bottom: 22%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 33px;
+    line-height: 38px; 
+    color: white;
+
+}
+
+#podLogo {
+    position: absolute;
+    left: 14%;
+    right: 72%;
+    top: 65%;
+    bottom: 0%;
+
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: white;
+}
+
+a {
+    color:white;
+}
+#cookbook {
+    position: absolute;
+    left: 3.5%;
+    right: 93%;
+    top: 16.5%;
+    bottom: 9%;
+    filter:brightness(110%);
+}
+
+#Heart {
+    position: absolute;
+    left: 94%;
+    right: 4%;
+    top: 37%;
+    bottom: 15%;
+    filter:brightness(120%);
+}
+
+.logOut {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: white;
+    left: 0%;
+    right: 0%;
+    top: 8.2%;
+    bottom: 37.1%;
+}
+
+/* signUp style */
+
+
+.container {
+	background-color: rgb(9, 62, 75);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	width: 400px;
+	max-width: 100%;
+    margin-top: 100px;
+}
+
+.header {
+	background-color: rgb(5, 36, 44);
+	padding: 20px 40px;
+    text-align: center;
+    color:#ffffff;
+    font-weight: 700;
+}
+
+.header h2 {
+	margin: 0;
+}
+
+
+.form {
+	padding: 30px 40px;	
+}
+
+.form-control {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+
+.form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.form-control input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-control.success input {
+	border-color: #2ecc71;
+}
+
+.form-control.error input {
+	border-color: #e74c3c;
+}
+
+.form-control i {
+	visibility: hidden;
+	position: absolute;
+	top: 40px;
+	right: 10px;
+}
+
+.form-control.success i.fa-check-circle {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+	color: #e74c3c;
+	visibility: visible;
+}
+
+.form-control small {
+	color: #e74c3c;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error small {
+	visibility: visible;
+}
+
+.form button {
+    background: rgb(5, 36, 44);
+	border-radius: 7px;
+	color: #fff;
+	display: block;
+	font-size: 16px;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+
+label {
+    color:#f0f0f0;
+}
+
+/* backend errors */
+.error {
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+.success {
+    background: #D4EDDA;
+    color: #40754C;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+/*check boxes */
+#ingredients {
+    width: 19%;
+    height: 100%;
+    color: white;
+    margin-left: 10px;
+    margin-top: 130px;
+}
+
+.ingredients {
+    background-color: rgb(6, 48, 73);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    color:white;
+}
+
+
+/*main window */
+
+.recipes img {
+    width: 200px; 
+    height:auto;
+}
+
+.recipes{
+    margin-top: 10px;
+    display: flex;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-top: -8px;
+    flex-wrap: wrap;
+}
+
+.recipe {
+    width: 33.33%;
+    flex: 33.33% 0 0;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 32px;
+}
+
+.emptySearchResult {
+    display: flex;
+    justify-content: center;
+    padding: 25%;
+}
+
+/* recipe page */
+
+.mainWindow {
+    min-width: 60%;
+    min-height: 50%;
+    margin-left: 70px;
+    margin-right: 10px;
+    margin-top: 130px;
+    background-color: rgb(6, 48, 73);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.mainWindow img {
+    width:200px;
+    height:auto;
+}
+
+.mainWindowOneRecipe {
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 130px;
+    background-color: rgb(6, 48, 73);
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.recipeHeading {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+#recipeImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; 
+}
+
+#recipeImage img {
+    width: 550px;
+    height: auto;
+}
+
+
+img {
+    filter: brightness(86%);
+}
+
+#recipeDescription {
+    padding: 0 60px 30px 60px;
+}
+
+.recipeHeading a {
+    color: rgb(57, 17, 236);
+}
+
+.recipe {
+    color:white;
+}
+#commentSection label {
+    display: flex;
+    justify-content: center;
+}
+
+.rating {
+    padding-left: 25%;
+}
+
+.photo {
+    padding-left: 45%;
+    margin-top: -2%;
+}
+.photoText {
+    color: rgb(160, 154, 154);
+}
+
+textarea {
+    width: 50%;
+    height: 120px;
+    margin: auto;
+    display: flex;
+}
+
+.ratingAndImage{
+    display: flex;
+    margin: 0.4% 0 0% 68%;
+}
+
+.add-review-form button {
+    background: #5D4399;
+    border-radius: 7px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 7px;
+    margin-top: 10px;
+    margin-left: 45%;
+}
+
+.comments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 3% 10%;
+    color:white;
+}
+
+.wrap {
+    margin: 0 0 4% 0;
+}
+
+.commentsHeading {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/* recipe buttons  */
+.fa-print{
+    color: white;
+    font-size: 23px;
+    cursor:pointer;
+}
+.fa-print:hover{
+    color:rgb(57, 17, 236);
+}
+
+.fa-heart{
+    color: white;
+    font-size: 23px;
+}
+.fa-heart:hover{
+    color:rgb(57, 17, 236);
+}
+
+.fs-heart{
+    color: white;
+    font-size: 23px;
+}
+
+.fs-heart:hover{
+    color: rgb(57, 17, 236);
+    font-size: 23px;
+}
+
+#recipeButtons {
+    display: flex;
+    gap: 7px;
+    padding-left: 94%;
+    padding-top: 20px;
+}
+
+.pagination ul {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+#favoriteButton #favoriteButtonDelete{
+    display: none;
+}
+
+#favoriteButton.is-favorite #favoriteButtonAdd{
+   display: none;
+}
+
+#favoriteButton.is-favorite #favoriteButtonDelete{
+    display: block;
+}
+
+/* dark Mode */
+.darkModeButton{
+    position: absolute;
+    padding-top: 1.63%;
+    padding-left: 97%;
+    z-index: -1;
+}
+
+.fa-moon-o{
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.fa-moon-o:hover{
+    color: rgb(57, 17, 236);
+}
+
+.warning {
+    display: flex;
+    gap: 10px;
+    padding: 30px 60px 30px 30px;
+    margin: 30px 70px 30px 240px;
+}
+
+.hidden {
+    visibility: hidden;
+    margin-left: 45%;
+}
+.notHiddenError {
+    visibility: visible;
+    color: red;
+}

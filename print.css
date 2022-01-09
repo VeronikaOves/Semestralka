@@ -1,0 +1,20 @@
+
+@media print {
+    .wrapper, img, .footer, #comments, #recipeButtons{
+        display: none;
+    }
+    p, h1 {
+        color:black
+    }
+    #recipeDescription{
+        display: flex;
+        justify-content: center;
+        padding: 30px 30px 10px 30px;
+    }
+    .mainWindowOneRecipe {
+        margin-right: 30px;
+        margin-left: 30px;
+        margin-top: 0px;
+
+    }
+}
