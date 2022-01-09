@@ -113,7 +113,7 @@
         <div id="printButton"><p title="Print" 
         onclick="window.print();"><i class="fas fa-print"></i></p></div>
         <?php if (!$user): ?> 
-            <a href="/favs.php"><div id="favoriteButton"><i class="far fa-heart"></i></div><a>
+            <a href="/favs.php"><div id="favoriteButton"><i class="far fa-heart"></i></div></a>
         <?php else: ?>
         <div id="favoriteButton" class="<?= $isFavorite ? 'is-favorite' : ''; ?>">
             <div id="favoriteButtonAdd"><a title="Add to favorites" style="cursor:pointer;" onclick="addToFavs(<?=$_SESSION['uid']?>, <?=$recipe['recipe_id']?>)"><i class="far fa-heart"></i></a></div> 
