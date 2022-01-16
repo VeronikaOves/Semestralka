@@ -57,14 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p class="success"><?= $_SESSION['form_data']['registration_success']; ?></p>
                     <?php } ?>
                     <div class="form-control">
-                        <label>Email</label>
+                        <label class ="isRequiered">Email</label>
                         <input type="text" name="email" id="email2" value="<?= isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : ''; ?>" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
                         <i class ="fas fa-check-circle"></i>
                         <i class ="fas fa-exclamation-circle"></i>
                         <small>Error message</small>
                     </div>
                     <div class="form-control">
-                        <label>Password</label>
+                        <label class ="isRequiered">Password</label>
                         <input type="password" name="password" id="password2" reqired pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$" />
                         <i class="fas fa-check-circle"></i>
                         <i class ="fas fa-exclamation-circle"></i>

@@ -246,21 +246,13 @@ body {
 
 /* backend errors */
 .error {
-    background: #F2DEDE;
     color: #A94442;
-    padding: 10px;
-    width: 95%;
     border-radius: 5px;
-    margin: 20px auto;
 }
 
 .success {
-    background: #D4EDDA;
     color: #40754C;
-    padding: 10px;
-    width: 95%;
     border-radius: 5px;
-    margin: 20px auto;
 }
 
 /*check boxes */
@@ -315,6 +307,7 @@ body {
 .mainWindow {
     min-width: 60%;
     min-height: 50%;
+    /* max-height: 75%; */
     margin-left: 70px;
     margin-right: 10px;
     margin-top: 130px;
@@ -384,10 +377,10 @@ body {
 }
 
 textarea {
-    width: 50%;
-    height: 120px;
+    width: 70%;
     margin: auto;
     display: flex;
+    height: 250px;
 }
 
 .ratingAndImage{
@@ -475,6 +468,10 @@ textarea {
     display: block;
 }
 
+#favoriteButton, #favoriteButtonAdd, #favoriteButtonDelete {
+    cursor: pointer;
+}
+
 /* dark Mode */
 .darkModeButton{
     position: absolute;
@@ -509,5 +506,67 @@ textarea {
 .notHiddenError {
     visibility: visible;
     color: red;
-    margin-left: 45%;
+}
+
+.isRequiered::after{
+    content: " *";
+    color: #df5555;
+}
+
+.ingredientsRecipe {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-top: -8px;
+    justify-content: center;
+}
+
+.ingredient  {
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.ingredient span {
+    display: inline-block;
+    background-color: #e3e6e8;
+    color: #646464;
+    border-radius: 50px;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.sortRecipes {
+    margin-top: 26px;
+}
+
+/* add recipe */
+
+.addRecipeContainer {
+    width: 700px;
+}
+
+
+.addlink {
+    
+    background: #5D4399;
+    border-radius: 7px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 7px;
+    margin: 1% 40% 0 40%;
+}
+
+.addlink a {
+    color:white;
+    padding: 0 10% 0 15%;
+}
+
+.recipedesc{
+    margin-top: 25px;
 }

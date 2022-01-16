@@ -5,6 +5,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password1');
 const passwordRepeat = document.getElementById('passwordRepeat');
 
+
 if (form1){
 	form1.addEventListener('submit', function(e) {
 		e.preventDefault();
@@ -12,15 +13,65 @@ if (form1){
 			this.submit();
 		}
 	}, false);
+
+	name.addEventListener('input', function(e) {
+		var nameValue = name.value.trim();
+
+		if(nameValue === '') {
+			setErrorFor(name, 'Name cannot be blank');
+		} else if (nameValue.length > 150) {
+			setErrorFor(name, 'Name should be no more than 150 symbols');
+	
+		} else {
+			setSuccessFor(name);
+		}
+	}, false);
+
+	email.addEventListener('input', function(e) {
+		var emailValue = email.value.trim();
+		if(emailValue === '') {
+			setErrorFor(email, 'Email cannot be blank');
+		} else if (!isEmail(emailValue)) {
+			setErrorFor(email, 'Invalid email');
+		} else {
+			setSuccessFor(email);
+		}
+		
+	}, false);
+
+	password.addEventListener('input', function(e) {
+		var passwordValue = password.value.trim();
+		if(passwordValue === '') {
+			setErrorFor(password, 'Password cannot be blank');
+		} else if(!strongPwd(passwordValue)){
+			setErrorFor(password, 'Password must contain at least eight characters at least one number and both lower and uppercase letters')
+		} else{
+			setSuccessFor(password);
+		}
+	}, false);
+
+	passwordRepeat.addEventListener('input', function(e) {
+		var passwordValue = password.value.trim();
+		var passwordRepeatValue = passwordRepeat.value.trim();
+		if(passwordRepeatValue === '') {
+			setErrorFor(passwordRepeat, 'Password cannot be blank');
+		} else if(passwordValue !== passwordRepeatValue) {
+			setErrorFor(passwordRepeat, 'Passwords do not match');
+		} else{
+			setSuccessFor(passwordRepeat);
+		 }
+	}, false);
+
 }
 
 
+
 function checkInputs() {
-	const nameValue = name.value.trim();
-	const emailValue = email.value.trim();
-	const passwordValue = password.value.trim();
-	const passwordRepeatValue = passwordRepeat.value.trim();
-	const error = [];
+	var nameValue = name.value.trim();
+	var emailValue = email.value.trim();
+	var passwordValue = password.value.trim();
+	var passwordRepeatValue = passwordRepeat.value.trim();
+	var error = [];
 
 	if(nameValue === '') {
 		setErrorFor(name, 'Name cannot be blank');
@@ -106,13 +157,37 @@ if (form2) {
 			this.submit();
 		}
 	}, false);
+
+	username2.addEventListener('input', function(e) {
+		var emailValue = username2.value.trim();
+		if(emailValue === '') {
+			setErrorFor(username2, 'Email cannot be blank');
+		} else if (!isEmail(emailValue)) {
+			setErrorFor(username2, 'Invalid email');
+		} else {
+			setSuccessFor(username2);
+		}
+
+	}, false);
+
+	password2.addEventListener('input', function(e) {
+		var passwordValue = password2.value.trim();
+		if(passwordValue === '') {
+			setErrorFor(password2, 'Password cannot be blank');
+		} else if(!strongPwd(passwordValue)){
+			setErrorFor(password2, 'Password must contain at least eight characters at least one number and both lower and uppercase letters')
+		} else{
+			setSuccessFor(password2);
+		}
+	}, false);
+	
 }
 
 
 function checkInputs1() {
 	const error = [];
-	const usernameValue = username2.value.trim();
-	const passwordValue = password2.value.trim();
+	var usernameValue = username2.value.trim();
+	var passwordValue = password2.value.trim();
 	if(usernameValue === '') {
 		setErrorFor(username2, 'Email cannot be blank');
 		error.push(1);
@@ -155,32 +230,54 @@ if (commentForm){
 			this.submit();
 		}
 	}, false);
+
+	text.addEventListener('input', function(e) {
+		var textValue = text.value.trim();
+		if (textValue.length < 2 || textValue.length > 500){ 
+			var small = commentForm.querySelector('small');
+			small.classList.add('notHiddenError')
+			small.innerText = 'Comment must be at leat 2 symbols but no more than 500!';
+		}
+		else {
+			var small = commentForm.querySelector('small');
+			small.classList.toggle('notHiddenError')
+			small.innerText = '';
+		}
+	}, false);
 }
 
 function checkComment(){
 	const error = [];
-	const textValue = text.value.trim();
-	const rating = document.querySelector('input[name="rating"]:checked').value;
+	var textValue = text.value.trim();
+	var rating = document.querySelector('input[name="rating"]').value;
 	if (textValue.length < 2 || textValue.length > 500){
 		error.push(1);
-		const small = commentForm.querySelector('small');
+		var small = commentForm.querySelector('small');
 		small.classList.add('notHiddenError')
 		small.innerText = 'Comment must be at leat 2 symbols but no more than 500!';
 
 	}
 
-	if (rating !=0 && rating !=1 && rating !=2 && rating !=3 && rating !=4 && rating !=5){
+	if (rating !=1 && rating !=2 && rating !=3 && rating !=4 && rating !=5){
 		error.push(1);
-		const small = commentForm.querySelector('small');
+		var small = commentForm.querySelector('small');
 		small.classList.add('notHiddenError')
 		small.innerText = 'Rating is not valid';
+	}
+
+	if (rating == ''){
+		error.push(1);
+		var small = commentForm.querySelector('small');
+		small.classList.add('notHiddenError')
+		small.innerText = 'You need to choose rating!';
 	}
 
 	return error
 }
 
 
-// sort validation
+
+// comment sort validation
 
 const sortForm = document.getElementById('sort');
 
@@ -247,3 +344,66 @@ function darkMode(url){
 	)
 };
 
+
+// addrecipe validation
+const addRecipeForm = document.getElementById('addRecipe');
+const recipeName = document.getElementById('recipeName');
+const recipeDesc = document.getElementById('recipeDescriptionNewRecipe');
+const img = document.getElementById('img');
+
+if (addRecipeForm){
+	addRecipeForm.addEventListener('submit', function(e) {
+		e.preventDefault();
+		if (checkNewRecipe().length == 0) {
+			this.submit();
+		}
+	}, false);
+
+
+	recipeName.addEventListener('input', function(e) {
+		var textValue = recipeName.value.trim();
+		if (textValue.length < 2 || textValue.length > 250){ 
+			setErrorFor(recipeName, 'Recipe name must be at leat 2 symbols but no more then 250!');
+		}
+		else {
+			setSuccessFor(recipeName);
+		}
+	}, false);
+
+	recipeDesc.addEventListener('input', function(e) {
+		var descValue = recipeDesc.value.trim();
+		if (descValue.length < 50 || descValue.length > 2000){ 
+			setErrorFor(recipeDesc,'Description should be at least 50 symbols but no more then 2000!');
+		}
+		else {
+			setSuccessFor(recipeDesc);
+		}
+	}, false);
+
+
+}
+
+function checkNewRecipe(){
+	const error = [];
+	var textValue = recipeName.value.trim();
+	var descValue = recipeDesc.value.trim();
+
+	if (textValue.length < 2 || textValue.length > 250){
+		error.push(1);
+		setErrorFor(recipeName, 'Recipe name must be at leat 2 symbols but no more then 250!');
+	}
+	else {
+		setSuccessFor(recipeName);
+	}
+
+	if (descValue.length < 50 || descValue.length > 2000){
+		error.push(1);
+		setErrorFor(recipeDesc, 'Recipe name must be at leat 2 symbols but no more then 250!');
+	}
+	else {
+		setSuccessFor(recipeDesc);
+	}
+
+
+	return error
+}

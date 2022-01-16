@@ -65,6 +65,25 @@
             $sql .= 'ORDER BY quantity DESC ';
             $sql .= 'LIMIT :limit OFFSET :offset';
         } 
+        elseif ($sortType == 'rating low to high'){
+            $sql = 'SELECT sum(comments.rating) As ratingSum, recipes.name AS name, count(comments.recipe_id) as ratingCount, ';
+            $sql .= 'recipes.img as img, recipes.recipe_id AS recipe_id from comments ';
+            $sql .= 'RIGHT JOIN recipes ON (comments.recipe_id = recipes.recipe_id) ';
+            $sql .= $ingredients_query;
+            $sql .= ' GROUP BY recipe_id ';
+            $sql .= 'ORDER BY (ratingSum/ratingCount) ASC ';
+            $sql .= 'LIMIT :limit OFFSET :offset';
+        }
+
+        elseif ($sortType == 'rating high to low'){
+            $sql = 'SELECT sum(comments.rating) As ratingSum, recipes.name AS name, count(comments.recipe_id) as ratingCount, ';
+            $sql .= 'recipes.img as img, recipes.recipe_id AS recipe_id from comments ';
+            $sql .= 'RIGHT JOIN recipes ON (comments.recipe_id = recipes.recipe_id) ';
+            $sql .= $ingredients_query;
+            $sql .= ' GROUP BY recipe_id ';
+            $sql .= 'ORDER BY (ratingSum/ratingCount) DESC ';
+            $sql .= 'LIMIT :limit OFFSET :offset';
+        }
         else {
             $sql = 'SELECT * FROM recipes ';
             $sql .= $ingredients_query;

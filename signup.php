@@ -72,10 +72,10 @@
         </div>
         <form class = "form" id="signUp" action="/signup.php" method="post"> 
             <?php if (isset($_SESSION['form_data']['error'])): ?>
-            <?= $_SESSION['form_data']['error']; ?></p>
+            <p><?= $_SESSION['form_data']['error']; ?></p>
             <?php endif; ?>
             <div class="form-control">
-                <label>Full name</label>
+                <label class ="isRequiered">Full name</label>
                 <input type="text" name="name" id="name" value="<?= isset($_SESSION['form_data']['name']) ? $_SESSION['form_data']['name'] : '' ?>">
                 <i class="fas fa-check-circle"></i>
                 <i class ="fas fa-exclamation-circle"></i>
@@ -85,7 +85,7 @@
                 <?php endif; ?>
             </div>
             <div class="form-control">
-                <label>Email</label>
+                <label class ="isRequiered">Email</label>
                 <input  type="text" name="email" id="email" value="<?= isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : '' ?>" >
                 <i class="fas fa-check-circle"></i>
                 <i class ="fas fa-exclamation-circle"></i>
@@ -95,7 +95,7 @@
                 <?php endif; ?>
             </div>
             <div class="form-control">
-                <label>Password</label>
+                <label class ="isRequiered">Password</label>
                 <input  type="password" name="password" id="password1">
                 <i class="fas fa-check-circle"></i>
                 <i class ="fas fa-exclamation-circle"></i>
@@ -105,7 +105,7 @@
                 <?php endif; ?>
             </div>
             <div class="form-control">
-                <label>Repeat the password</label>
+                <label class ="isRequiered">Repeat the password</label>
                 <input  type="password" name="passwordRepeat" id="passwordRepeat" >
                 <i class="fas fa-check-circle"></i>
                 <i class ="fas fa-exclamation-circle"></i>

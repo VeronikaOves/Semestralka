@@ -239,4 +239,41 @@ function calculateRating($recipeid, $db) {
     return $result;
 }
 
+
+/**
+ * Post new recipe
+ * 
+ * @param string $reciName recipe's name
+ * @param array $ingredients recipe's ingredients
+ * @param string $description recipe's description
+ * @param 
+ * @param PDO $db database connection
+ * 
+ * @return int $id new recipe's id
+ */
+
+
+
+
+function postNewRecipe($recipeName, $ingredients, $description, $img, $db){
+    if ($img == ''):
+        $img = 'img/emptyImage.jpg';
+    else:
+        
+    endif;
+    $sql = "INSERT INTO recipes (name, description, img) VALUES (?, ?, ?)";
+    $stmt = $db->prepare($sql);
+    $stmt->execute([$recipeName, $description, $img]);
+    $id = $db->lastInsertId();
+
+    if(!empty($ingredients)):
+        foreach($ingredients as $ingredient):
+            $sql = "INSERT INTO ingredients_list (ingredient_id, recipe_id) VALUES (?, ?)";
+            $stmt = $db->prepare($sql);
+            $stmt->execute([$ingredient, $id]);
+        endforeach;
+    endif;
+    return $id;
+}
+
 ?>

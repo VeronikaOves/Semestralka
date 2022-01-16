@@ -71,6 +71,11 @@ Search.appendIndex(
             "summary": "Get\u0020information\u0020to\u0020calculate\u0020recipe\u0027s\u0020rating",
             "url": "namespaces/default.html#function_calculateRating"
         },                {
+            "fqsen": "\\postNewRecipe\u0028\u0029",
+            "name": "postNewRecipe",
+            "summary": "Post\u0020new\u0020recipe",
+            "url": "namespaces/default.html#function_postNewRecipe"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",

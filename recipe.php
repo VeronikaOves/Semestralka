@@ -24,8 +24,11 @@
         $stm->execute([$filtered_id]);
 
         $recipe = $stm->fetch();
-
-        if (!$recipe) echo "Doesn't exist";
+ 
+        if (!$recipe) {
+            echo "Doesn't exist";
+            die();
+        } 
 
         ## get the comments
         $sorting = $_GET['sorting'];
@@ -47,6 +50,13 @@
         ## check if this recipe is user's favoriet
         $isFavorite = checkIfRecipeIsUsersFavorite($_SESSION['uid'], $recipe['recipe_id'], $db);
     
+        ## get ingredience
+
+        $sql = $sql = 'SELECT ingredients.name AS name from ingredients_list LEFT JOIN ingredients ON ingredients.ingredient_id = ingredients_list.ingredient_id WHERE ingredients_list.recipe_id = ?';
+        $stm = $db->prepare($sql);
+        $stm->execute([$recipe['recipe_id']]);
+        $ingredients = $stm->fetchall();
+
         ## Session
         if (isset($_SESSION['form_data'])) {
             $form_data = $_SESSION['form_data'];
@@ -78,10 +88,16 @@
             })($form_data);
 
             $form_data['validation']['rating'] = (function($form_data) {
-                $arr = [0,1,2,3,4,5];
+                $arr = [1,2,3,4,5];
+                if(!$form_data['rating']) {
+                    return 'You need to choose rating!';
+                }
+
                 if (!in_array($form_data['rating'], $arr)) {
                     return 'Raiting is not valid';
                 }
+
+                
             })($form_data);
 
             // Delete epmpty errors
@@ -116,14 +132,24 @@
             <a href="/favs.php"><div id="favoriteButton"><i class="far fa-heart"></i></div></a>
         <?php else: ?>
         <div id="favoriteButton" class="<?= $isFavorite ? 'is-favorite' : ''; ?>">
-            <div id="favoriteButtonAdd"><a title="Add to favorites" style="cursor:pointer;" onclick="addToFavs(<?=$_SESSION['uid']?>, <?=$recipe['recipe_id']?>)"><i class="far fa-heart"></i></a></div> 
-            <div id="favoriteButtonDelete"><a title="Delete from favorites" style="cursor:pointer;" onclick="deleteFromFavs(<?=$_SESSION['uid']?>, <?=$recipe['recipe_id']?>)"><i class="fas fa-heart"></i></a></div>
+            <div id="favoriteButtonAdd"><a title="Add to favorites" onclick="addToFavs(<?=$_SESSION['uid']?>, <?=$recipe['recipe_id']?>)"><i class="far fa-heart"></i></a></div> 
+            <div id="favoriteButtonDelete"><a title="Delete from favorites"  onclick="deleteFromFavs(<?=$_SESSION['uid']?>, <?=$recipe['recipe_id']?>)"><i class="fas fa-heart"></i></a></div>
         </div> 
         <?php endif ?>
     </div>
     <div id="recipeInfomation">
         <div class="recipeHeading"> <h1><?= $recipe['name']; ?></h1></div>
         <div id="recipeImage"><img src="<?= $recipe['img']; ?>" alt="<?= $recipe['name']; ?>"></div>
+        <div class="ingredientsWrap">
+            <div class="recipeHeading"> <h4>Ingredients</h4> </div>
+            <ul class="ingredientsRecipe">
+                <?php foreach ($ingredients as $ingredient):?>
+                    <li class="ingredient">
+                        <span><?= $ingredient['name'];?></span>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
         <div class="recipeHeading"> <h1>Description</h1></div>
         <div id="recipeDescription"><p><?= $recipe['description']; ?></p></div>
     </div>
@@ -132,7 +158,7 @@
     <?php if ($user): ?>
         <form class="add-review-form" action="<?= getCurrentUrl(); ?>" method="post" id="add-review">
         <div id="commentSection"> 
-            <label for="comment">Write your comment here!</label>
+            <label for="comment" class ="isRequiered">Write your comment here!</label>
                 <textarea name="comment" id="comment"><?= isset($form_data['comment']) ? $form_data['comment'] : ''; ?></textarea>
                 <?php if (isset($form_data['validation']['comment'])): ?>
                 <p><?= $form_data['validation']['comment']; ?></p>
@@ -141,7 +167,7 @@
         </div>
             <div class="rating">
                     <div>
-                        <p class="ratingHeading">Rate the recipe</p>
+                        <p class ="isRequiered">Rate the recipe</p>
                         <?php for ($i = 1; $i <= 5; $i++): ?>
                             <input type="radio" value="<?= $i; ?>" name="rating" id="<?= $i; ?>">
                             <label for="<?= $i; ?>"> <?= $i; ?></label>
@@ -152,10 +178,6 @@
                     <?php endif; ?>
             </div>
             
-            <div class="photo">
-                <label for="photo" class="photoText">Photo of your dish</label>
-                <input type="file" id="photo" name="photo" accept="image/png, image/jpeg">
-            </div>
             <input type="hidden" name="commentForm">
             <button type="submit">Submit </button>
         </form>
